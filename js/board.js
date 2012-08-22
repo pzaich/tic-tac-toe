@@ -12,25 +12,12 @@ var board = {
 		};
 		return col;
 	},
-	// diagonal : function (topCell) {
-	// 	var diagonal = [];
-	// 	for (i = 0; i < 3; i++) {
-	// 		if (topCell === "0") {
-	// 			diagonal.push(this.cells[i * 4]);
-	// 		} else if (topCell === "2") {
-	// 			diagonal.push(this.cells[(i + 1) * 2]);
-	// 		};
-	// 	};
-	// 	return diagonal;
-	// },
 	allBlocks : function () {
 		var allBlocks = [];
 		$.each([0,1,2], function (i, val) {
 			allBlocks.push(board.row(i));
 			allBlocks.push(board.col(i));
 		});
-		// allBlocks.push(this.diagonal("0"));
-		// allBlocks.push(this.diagonal("2"));
 		return allBlocks;
 	},
 	corners : function () {
