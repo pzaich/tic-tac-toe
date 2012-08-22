@@ -1,46 +1,50 @@
 var computerPlayer = {
 	move : function () {
 		if (computerPlayer.checkCenter() === false) {
-			if (this.checkForDanger()) {
-				console("single cell needs to be checked");
+			if (this.checkForDanger() === false) {
+				console.log("single cell needs to be checked");
+				// this.checkCorner();
 			};
 		};
 	},
 	checkCenter : function () {
-		if (board.marked()){
-			if (board.isCellChecked(4) === undefined) {
-				board.markCell(4, "computer");
-				board.updateCell(4);
-				return true;
-			}
+		var centerOpen = false;
+		if (board.isCellChecked(4) === undefined) {
+			board.cells[4].author = "computer";
+			board.updateCell(4);
+			centerOpen = true;
 		}
-		return false;
+		return centerOpen;
 	},
 	checkForDanger : function () {
 		var markedACell = false;
 		$.each(board.allBlocks(), function (index, block){
 			if (board.howManyMarks(block) === 2) {
 				computerPlayer.markFirstCellFound(block);
-				// return false;
+				return false;
 			}
 		});
+		console.log(markedACell);
 		return markedACell;
 	},
 	markFirstCellFound : function (block) {
 		$.each(block, function (index, cell) {
-			console.log("iterating over each cell" + index)
+			console.log(index);
 			if (cell.author === undefined ){
-				console.log("checked the cell " + index)
 				cell.author = "computer";
+				console.log("checked");
 				board.updateCell(cell.position);
-				markedACell = true;
-				return false;
+				//return true;
 			}
 		});
 	},
 	checkCorner : function (){
 		$.each(board.corners(), function (index, cell) {
-
+			if (cell.author === undefined) {
+				cell.author = "computer";
+				board.updateCell(cell.position)
+				// return false;
+			}
 		});
 	}
 };

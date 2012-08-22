@@ -40,9 +40,6 @@ var board = {
 	isCellChecked : function (cellNo) {
 		return this.cells[cellNo].author;
 	},
-	markCell : function (cellNo, author) {
-		this.cells[cellNo].author = author;
-	},
 	updateCell : function (cellNo) {
 		if (this.cells[cellNo].author === "player") {
 			$("#" + cellNo).addClass("crossed");
