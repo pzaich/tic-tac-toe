@@ -1,11 +1,12 @@
 var computerPlayer = {
 	move : function () {
-		if (computerPlayer.checkCenter() === false) {
-			if (this.checkForDanger() === false) {
-				console.log("single cell needs to be checked");
-				// this.checkCorner();
-			};
-		};
+		if (this.checkCenter()){
+			return
+		} else if (this.checkForDanger()){
+			return
+		}
+		console.log("made it to check corner");
+		this.checkCorner();
 	},
 	checkCenter : function () {
 		var centerOpen = false;
@@ -19,32 +20,47 @@ var computerPlayer = {
 	checkForDanger : function () {
 		var markedACell = false;
 		$.each(board.allBlocks(), function (index, block){
-			if (board.howManyMarks(block) === 2) {
-				computerPlayer.markFirstCellFound(block);
-				return false;
+			if (board.howManyMarks(block, "player") === 2) {
+				markedACell = computerPlayer.markFirstCellFound(block);
+				if (markedACell === true) {
+					return false;
+				} 
 			}
 		});
-		console.log(markedACell);
 		return markedACell;
 	},
 	markFirstCellFound : function (block) {
+		var cellMarked = false;
 		$.each(block, function (index, cell) {
-			console.log(index);
 			if (cell.author === undefined ){
 				cell.author = "computer";
-				console.log("checked");
 				board.updateCell(cell.position);
-				//return true;
+				cellMarked = true;
 			}
 		});
+		return cellMarked;
 	},
 	checkCorner : function (){
 		$.each(board.corners(), function (index, cell) {
 			if (cell.author === undefined) {
 				cell.author = "computer";
-				board.updateCell(cell.position)
-				// return false;
+				board.updateCell(cell.position);
+				return false;
 			}
 		});
+	},
+	checkEdges : function (){
+		$.each(board.corners(), function (index, cell) {
+			if (cell.author === undefined) {
+				cell.author = "computer";
+				board.updateCell(cell.position);
+				return false;
+			}
+		});
+	},
+	checkforWinner : function () {
+		$.each(this.allBlocks(), function (index, block){
+				//check for 2 === "computer", mark if there is undefined
+		});	
 	}
 };

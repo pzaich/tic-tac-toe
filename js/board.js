@@ -41,6 +41,14 @@ var board = {
 		corners.push(this.cells[8]);
 		return corners;
 	},
+	sides : function () {
+		var edges = [];
+		edges.push(this.cells[1]);
+		edges.push(this.cells[3]);
+		edges.push(this.cells[5]);
+		edges.push(this.cells[7]);
+		return edges;
+	},
 	marked : function () { 
 		var checked = false
 		$.each(this.cells, function (index, cell) {
@@ -61,10 +69,10 @@ var board = {
 		}
 		$('#' + cellNo).removeClass("unclicked").off('click');
 	},
-	howManyMarks : function (blockArr) {
+	howManyMarks : function (blockArr, author) {
 		var counter = 0;
 		$.each(blockArr, function (index, cell) {
-			if (cell.author === "player"){
+			if (cell.author === author){
 				counter++;
 			};
 		});
