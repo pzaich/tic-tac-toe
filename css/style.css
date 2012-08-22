@@ -1,0 +1,26 @@
+#board li{
+	float:left;
+	border: 1px solid #ddd;
+	width: 98px;
+	height: 98px;
+	text-align: center;
+	list-style: none;
+	display: block;
+}
+
+.unclicked{
+	cursor: pointer;
+}
+
+.crossed{
+	background: url(../img/x.png) center center no-repeat;
+}
+
+.ooed{
+	background: url(../img/o.png) center center no-repeat;
+}
+
+#board{
+	margin: 0;
+	padding: 0;
+}
