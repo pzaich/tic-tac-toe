@@ -33,14 +33,6 @@ var board = {
 		allBlocks.push(this.diagonal("2"));
 		return allBlocks;
 	},
-	corners : function () {
-		var corners = [];
-		corners.push(this.cells[0]);
-		corners.push(this.cells[2]);
-		corners.push(this.cells[6]);
-		corners.push(this.cells[8]);
-		return corners;
-	},
 	sides : function () {
 		var edges = [];
 		edges.push(this.cells[1]);

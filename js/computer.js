@@ -5,8 +5,7 @@ var computerPlayer = {
 		} else if (this.checkForDanger()){
 			return
 		}
-		console.log("made it to check corner");
-		this.checkCorner();
+		this.checkSides();
 	},
 	checkCenter : function () {
 		var centerOpen = false;
@@ -40,17 +39,8 @@ var computerPlayer = {
 		});
 		return cellMarked;
 	},
-	checkCorner : function (){
-		$.each(board.corners(), function (index, cell) {
-			if (cell.author === undefined) {
-				cell.author = "computer";
-				board.updateCell(cell.position);
-				return false;
-			}
-		});
-	},
-	checkEdges : function (){
-		$.each(board.corners(), function (index, cell) {
+	checkSides : function (){
+		$.each(board.sides(), function (index, cell) {
 			if (cell.author === undefined) {
 				cell.author = "computer";
 				board.updateCell(cell.position);
