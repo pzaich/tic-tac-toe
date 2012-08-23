@@ -10,6 +10,7 @@ var init = function () {
 };
 
 var firstClick = true;
+var playerInCenter;
 
 
 var checkForGameOver = function () {

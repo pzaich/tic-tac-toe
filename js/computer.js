@@ -1,25 +1,28 @@
 var computerPlayer = {
 	move : function () {
-		if (this.checkCenter()) {
-		} else if (this.checkForDangerOrWinner("player")) {
+		if (firstClick === true) {
+			this.checkCenter();
 		} else if (this.checkForDangerOrWinner("computer")) {
+		} else if (this.checkForDangerOrWinner("player"))  {
 		} else { 
-			if (firstClick) {
+			if (playerInCenter) {
 				this.checkCorners();
 			} else {
 				this.checkSides();
 			}
 		}
-		firstClick = false;
 	},
 	checkCenter : function () {
-		var centerOpen = false;
+		firstClick = false;
 		if (board.isCellChecked(4) === undefined) {
 			board.cells[4].author = "computer";
 			board.updateCell(4);
 			centerOpen = true;
+
+		} else {
+			playerInCenter = true;
+			this.checkCorners();
 		}
-		return centerOpen;
 	},
 	checkForDangerOrWinner : function (author) {
 		var markedACell = false;
