@@ -15,10 +15,10 @@ $(function () {
 	init();
 
 	$('#board li.unclicked').click(function(){
-			var clickedCell = board.cells[$(this).attr("id")];
-			clickedCell.author = "player";
-			board.updateCell($(this).attr("id"));
-			computerPlayer.move();
+		var clickedCell = board.cells[$(this).attr("id")];
+		clickedCell.author = "player";
+		board.updateCell($(this).attr("id"));
+		computerPlayer.move();
 	});
 
 	$('#reset').click(function(){

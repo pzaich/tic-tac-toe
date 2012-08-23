@@ -1,13 +1,11 @@
 var computerPlayer = {
 	move : function () {
-		if (this.checkCenter()){
-			return
-		} else if (this.checkForDangerOrWinner("player")){
-			return
-		} else if (this.checkForDangerOrWinner("computer")){
-			return
+		if (this.checkCenter()) {
+		} else if (this.checkForDangerOrWinner("player")) {
+		} else if (this.checkForDangerOrWinner("computer")) {
+		} else { 
+			this.checkSides();
 		}
-		this.checkSides();
 	},
 	checkCenter : function () {
 		var centerOpen = false;
