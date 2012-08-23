@@ -19,6 +19,10 @@
 	background: url(../img/o.png) center center no-repeat;
 }
 
+.ooed.winner{
+	background: url(../img/o-3.png) center center no-repeat;
+}
+
 #board{
 	margin: 0;
 	padding: 0;

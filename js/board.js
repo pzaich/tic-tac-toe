@@ -50,6 +50,19 @@ var board = {
 		});
 		return checked;
 	},
+	allChecked : function () {
+		var counter = 0;
+		$.each(this.cells, function (index, cell) {
+			if (cell.author !== undefined) {
+				counter++;
+			}
+		});
+		if (counter === 9) {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	isCellChecked : function (cellNo) {
 		return this.cells[cellNo].author;
 	},
@@ -69,5 +82,10 @@ var board = {
 			};
 		});
 		return counter;
+	},
+	deactivate : function () {
+		$.each(this.cells, function (index, cell) {
+			$("#" + cell.position).off('click').removeClass('unclicked');
+		});
 	}
 };

@@ -9,6 +9,21 @@ var init = function () {
 	};
 };
 
+var checkForGameOver = function () {
+	$.each(board.allBlocks(), function(index, block) {
+		if (board.howManyMarks(block, "computer") === 3) {
+			$.each(block, function (index, cell) {
+				$('#' + cell.position).addClass("winner");
+			});
+			board.deactivate();
+			alert("Game over, You Lose!");
+		} 
+	});
+	if (board.allChecked()) {
+			alert("Cats game, Rematch!");
+	}
+};
+
 
 $(function () {
 	//Initialization of the game board
@@ -19,6 +34,7 @@ $(function () {
 		clickedCell.author = "player";
 		board.updateCell($(this).attr("id"));
 		computerPlayer.move();
+		checkForGameOver();
 	});
 
 	$('#reset').click(function(){
