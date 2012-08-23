@@ -41,6 +41,14 @@ var board = {
 		edges.push(this.cells[7]);
 		return edges;
 	},
+	corners : function () {
+		var cornerCells = [];
+		cornerCells.push(this.cells[0]);
+		cornerCells.push(this.cells[2]);
+		cornerCells.push(this.cells[6]);
+		cornerCells.push(this.cells[8]);
+		return cornerCells;
+	},
 	marked : function () { 
 		var checked = false
 		$.each(this.cells, function (index, cell) {

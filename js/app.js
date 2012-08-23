@@ -9,6 +9,9 @@ var init = function () {
 	};
 };
 
+var firstClick = true;
+
+
 var checkForGameOver = function () {
 	$.each(board.allBlocks(), function(index, block) {
 		if (board.howManyMarks(block, "computer") === 3) {
