@@ -1,8 +1,7 @@
 #board li{
 	float:left;
-	border: 1px solid #ddd;
-	width: 98px;
-	height: 98px;
+	width: 100px;
+	height: 100px;
 	text-align: center;
 	list-style: none;
 	display: block;
@@ -23,4 +22,6 @@
 #board{
 	margin: 0;
 	padding: 0;
+	background: url(../img/board.png) center center no-repeat;
+	overflow: hidden;
 }

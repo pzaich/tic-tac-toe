@@ -2,7 +2,9 @@ var computerPlayer = {
 	move : function () {
 		if (this.checkCenter()){
 			return
-		} else if (this.checkForDanger()){
+		} else if (this.checkForDangerOrWinner("player")){
+			return
+		} else if (this.checkForDangerOrWinner("computer")){
 			return
 		}
 		this.checkSides();
@@ -16,10 +18,10 @@ var computerPlayer = {
 		}
 		return centerOpen;
 	},
-	checkForDanger : function () {
+	checkForDangerOrWinner : function (author) {
 		var markedACell = false;
 		$.each(board.allBlocks(), function (index, block){
-			if (board.howManyMarks(block, "player") === 2) {
+			if (board.howManyMarks(block, author) === 2) {
 				markedACell = computerPlayer.markFirstCellFound(block);
 				if (markedACell === true) {
 					return false;
@@ -47,10 +49,5 @@ var computerPlayer = {
 				return false;
 			}
 		});
-	},
-	checkforWinner : function () {
-		$.each(this.allBlocks(), function (index, block){
-				//check for 2 === "computer", mark if there is undefined
-		});	
 	}
 };
