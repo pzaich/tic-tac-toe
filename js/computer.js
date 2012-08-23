@@ -5,7 +5,7 @@ var computerPlayer = {
 		} else if (this.checkForDangerOrWinner("computer")) {
 		} else if (this.checkForDangerOrWinner("player"))  {
 		} else { 
-			if (playerInCenter) {
+			if (board.cells[4].author === "player") {
 				this.checkCorners();
 			} else {
 				this.checkSides();
@@ -20,7 +20,6 @@ var computerPlayer = {
 			centerOpen = true;
 
 		} else {
-			playerInCenter = true;
 			this.checkCorners();
 		}
 	},
